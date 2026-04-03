@@ -1,0 +1,15 @@
+# Render Blueprint for Node.js Signaling Server
+services:
+  - type: web
+    name: webrtc-signaling-server
+    env: node
+    plan: free # Use free tier
+    buildCommand: npm install
+    startCommand: npm start
+    envVars:
+      - key: NODE_VERSION
+        value: 18.16.0
+      - key: MONGO_URI
+        sync: false # User must provide this in the Render dashboard
+      - key: JWT_SECRET
+        generateValue: true # Generate a random secret for security
